@@ -39,8 +39,8 @@ ClassicalYaml: &ClassicalYaml {type: http, interval: 86400, behavior: classical,
 ############################################## - ⚓️ 锚点区结束 - ############################################## 
 # 远程订阅组❗️注意：请提供您的机场订阅链接，每个链接一行，并为每个机场命名，末尾的[A]为每个节点添加机场名称前缀，可自定义。
 proxy-providers:
-  红杏云: {<<: *PProviders, url: 'https://hongxingdl.love/hxyunvip?token=6a9113bceb1743075ea87254c05aceb6', override: {additional-prefix: '[红杏-] '}}
-  琴鸟云: {<<: *PProviders, url: 'http://38.59.246.49:38295/api/v1/client/subscribe?token=5747d45f45a4bb8ea7ef340a0580bf44', override: {additional-prefix: '[琴鸟-] '}}
+  机场名称: {<<: *PProviders, url: '订阅链接', override: {additional-prefix: '[机场-] '}}
+
 
 
   
