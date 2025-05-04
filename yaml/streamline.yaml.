@@ -105,9 +105,10 @@ dns:
  
 # 出站策略
 # 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
-pr: &pr {type: select, proxies: [🚀 默认代理, 🔯 香港故转, 🔯 日本故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
+pr: &pr {type: select, proxies: [🚀 默认代理, 🔯 香港故转, 🔯 日本故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, ✋ 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
 proxy-groups:
-  - {name: 🚀 默认代理, type: select, proxies: [🔯 香港故转, 🔯 日本故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
+  - {name: 🚀 默认代理, type: select, proxies: [🔯 香港故转, 🔯 日本故转, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 自动选择, ✋ 手动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
+  - {name: ✋ 手动选择, type: select, include-all: true}
   - {name: 📹 YouTube, <<: *pr}
   - {name: 🍀 Google, <<: *pr}
   - {name: 🤖 ChatGPT, <<: *pr}
@@ -132,33 +133,6 @@ proxy-groups:
   - {name: ♻️ 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
   - {name: 🌐 全部节点, type: select, include-all: true}
-
-# 规则匹配
-# 此规则部分没有做防泄露处理，因为弊严重大于利！
-rules:
-  - DOMAIN-SUFFIX,qichiyu.com,🚀 默认代理
-  - RULE-SET,private_domain,直连
-  - RULE-SET,apple_domain,🍎 Apple
-  - RULE-SET,proxylite,🚀 默认代理
-  - RULE-SET,ai,🤖 ChatGPT
-  - RULE-SET,github_domain,👨🏿‍💻 GitHub
-  - RULE-SET,youtube_domain,📹 YouTube
-  - RULE-SET,google_domain,🍀 Google
-  - RULE-SET,onedrive_domain,🐬 OneDrive
-  - RULE-SET,microsoft_domain,🪟 Microsoft
-  - RULE-SET,tiktok_domain,🎵 TikTok
-  - RULE-SET,speedtest_domain,✈️ Speedtest
-  - RULE-SET,telegram_domain,📲 Telegram
-  - RULE-SET,netflix_domain,🎥 NETFLIX
-  - RULE-SET,paypal_domain,💶 PayPal
-  - RULE-SET,gfw_domain,🚀 默认代理
-  - RULE-SET,geolocation-!cn,🚀 默认代理
-  - RULE-SET,cn_domain,🎯 直连
-  - RULE-SET,google_ip,🍀 Google,no-resolve
-  - RULE-SET,netflix_ip,🎥 NETFLIX,no-resolve
-  - RULE-SET,telegram_ip,📲 Telegram,no-resolve
-  - RULE-SET,cn_ip,🎯 直连
-  - MATCH,🐟 漏网之鱼
 
 # 规则集
 rule-anchor:
